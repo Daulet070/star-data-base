@@ -1,0 +1,36 @@
+.header {
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: .9rem 0;
+    gap: 70px;
+}
+.header__link {
+    color: darkcyan;
+}
+.header__link:hover {
+    color: darkcyan;
+    text-decoration: none;
+}
+.list {
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.list__item {
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: .5rem .1rem;
+    border-radius: 3px;
+}
+.list__item:hover {
+    background-color: #444;
+}
+.list__item-link {
+    color: darkcyan;
+    text-decoration: none;
+}
+.list__item-link:hover {
+    color: darkcyan;
+    text-decoration: none;
+}

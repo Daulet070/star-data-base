@@ -1,0 +1,19 @@
+.person-details {
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 1rem;
+    gap: 20px;
+}
+.person-image {
+    width: 30%;
+    height: 30%;
+    border-radius: 10px;
+}
+/* .person-details__info {
+    margin-top: 1rem;
+}
+.info__list-item {
+    padding: .4rem .2rem;
+} */
