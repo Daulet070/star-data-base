@@ -1,0 +1,36 @@
+#loader {
+    display:block;
+    margin: 0 auto;
+  }
+  
+  .outer {
+    margin: auto;
+    border: 16px solid rgba(0,0,0,0); 
+    border-top: 16px solid darkcyan; 
+    border-bottom: 16px solid darkcyan;
+    border-radius: 50%;
+    border-style: double;
+    width: 150px;
+    height: 150px;
+    animation: spin 5s linear infinite;
+    
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .inner {
+    margin:auto;
+    border: 15px solid rgba(0,0,0,0); 
+    border-top: 15px solid brown;
+    border-bottom: 15px solid brown;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin2 1.5s linear infinite;
+    
+  }
+  @keyframes spin2 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }

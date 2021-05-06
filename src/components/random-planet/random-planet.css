@@ -1,5 +1,6 @@
 .random-planet {
     display: flex;
+    align-items: center;
     padding: 1rem;
     flex-wrap: wrap;
     gap: 20px;
@@ -9,12 +10,12 @@
     height: 150px;
     border-radius: 10px;
 }
-.random-planet__info {
+/* .random-planet__info {
 
 }
 .info {
 
-}
+} */
 .info__title {
     font-size: 2em;
 }
