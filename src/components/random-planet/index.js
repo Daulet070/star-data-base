@@ -41,24 +41,29 @@ class RandomPlanet extends Component {
         planet: {},
         loading: true
     };
-    
+
     constructor() {
         super();
         this.updatePlanet();
     }
-
+    
     onPlanetLoaded = (planet) => {
         this.setState({
             planet,
             loading: false
         });
     };
+    
+    onError = (err) => {
+        
+    }
 
     updatePlanet() {
         const id = Math.floor(Math.random() *25) + 2;
         this.swapiService
             .getPlanet(id)
-            .then(this.onPlanetLoaded);
+            .then(this.onPlanetLoaded)
+            .catch(this.onError);
     }
 
     render() {
