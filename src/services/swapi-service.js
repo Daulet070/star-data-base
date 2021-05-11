@@ -1,4 +1,5 @@
 export default class SwapiService {
+
     _apiBase = 'https://swapi.dev/api/';
 
     async getResource(url) {
@@ -40,12 +41,14 @@ export default class SwapiService {
         const starship = await this.getResource(`starships/${id}`);
         return this._transformStarship(starship);
     }
+
     _extractId(item) {
         const idRegExp = /\/([0-9]*)\/$/;
         return item.url.match(idRegExp)[1];
 
     }
-    _transformPlanet(planet) {
+
+    _transformPlanet = (planet) => {
 
         return {
             id: this._extractId(planet),
@@ -55,7 +58,8 @@ export default class SwapiService {
             diameter: planet.diameter
         }
     }
-    _transformPerson(persone) {
+
+    _transformPerson = (persone) => {
 
         return {
             id: this._extractId(persone),
@@ -65,7 +69,8 @@ export default class SwapiService {
             eyeColor: persone.eyeColor
         }
     }
-    _transformStarship(starship) {
+
+    _transformStarship = (starship) => {
 
         return {
             id: this._extractId(starship),

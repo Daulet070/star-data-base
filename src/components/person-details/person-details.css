@@ -1,14 +1,16 @@
 .person-details {
     display: flex;
-    padding: 1rem;
     flex-wrap: wrap;
     flex-direction: row;
-    margin-top: 1rem;
     gap: 20px;
+    flex: 1 1 auto;
+    background-color: #444;
+    padding: 1rem;
+    border-radius: 15px;
 }
-.person-image {
-    width: 30%;
-    height: 30%;
+.person-details__image {
+    width: 33%;
+    /* height: auto; */
     border-radius: 10px;
 }
 /* .person-details__info {

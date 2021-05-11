@@ -7,11 +7,11 @@ import './header.css'
 
 function header(props) {
     return (
-        <header className="header d-flex">
+        <header className="header">
             <h1 className="header__title">
                 <a href="#" className="header__link">Star DB</a>
             </h1>
-            <ul className="header__list list d-flex">
+            <ul className="header__list list">
                 <li className="list__item">
                     <a href="#" className="list__item-link">People</a>
                 </li>
