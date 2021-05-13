@@ -59,14 +59,14 @@ export default class SwapiService {
         }
     }
 
-    _transformPerson = (persone) => {
+    _transformPerson = (person) => {
 
         return {
-            id: this._extractId(persone),
-            name: persone.name,
-            gender: persone.gender,
-            birthYear: persone.birthYear,
-            eyeColor: persone.eyeColor
+            id: this._extractId(person),
+            name: person.name,
+            gender: person.gender,
+            birthYear: person.birth_year,
+            eyeColor: person.eye_color
         }
     }
 
