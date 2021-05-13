@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 
 import './item-list.css'
 
 class ItemList extends Component {
 
-    swapiService = new SwapiService();
-
     state = {
-        peopleList: []
+        itemList: []
     };
 
     componentDidMount() {
-        this.swapiService
-        .getAllPeople()
-        .then((peopleList) => {
+        const { getData } = this.props;
+        
+        getData()
+        .then((itemList) => {
             this.setState({
-                peopleList
+                itemList
             });
         });
     };
     
     renderItems(arr) {
-        console.log("arr", arr)
         return arr.map(({id, name}) => {
             return (
                 <li key={id}
@@ -36,11 +33,11 @@ class ItemList extends Component {
     };
     
     render() {
-        const { peopleList } = this.state;
-        console.log("peopleList", peopleList)
-        const items = this.renderItems(peopleList);
+        const { itemList } = this.state;
+        
+        const items = this.renderItems(itemList);
 
-        if (!peopleList) {
+        if (!itemList) {
             return <Spinner />
         }
 

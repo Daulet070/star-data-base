@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SwapiService from '../../services/swapi-service';
+import Spinner from '../spinner';
+
 import './person-details.css';
 
 class PersonDetails extends Component {
@@ -22,21 +24,22 @@ class PersonDetails extends Component {
 
     updatePerson() {
         const { personId } = this.props;
-        console.log(" ~ this.props", this.props)
+
         if (!personId) return;
+        
         this.swapiService
             .getPerson(personId)
             .then((person) => {
-                console.log(" .then ~ person", person)
                 this.setState({ person })
             })
     }
 
     render() {
+
         if (!this.state.person) {
             return <span>Select person from a list</span>
         }
-        console.log("🚀 ~ file: index.js ~ line 29 ~ PersonDetails ~ render ~ this.state.person", this.state.person)
+        
         const { id, name, gender, birthYear, eyeColor } = this.state.person;
 
         return (
@@ -49,25 +52,19 @@ class PersonDetails extends Component {
                     </h2>
                     <ul className="info__list">
                         <li className="info__list-item">
-                            <span className="term">
-                                Gender
-                            </span>
+                            <span className="term">Gender: </span>
                             <span> 
-                                { gender }
+                                 { gender }
                             </span>
                         </li>
                         <li className="info__list-item">
-                            <span className="term">
-                                Birth Year
-                            </span>
+                            <span className="term">Birth Year: </span>
                             <span>
-                                {birthYear}
+                                 {birthYear}
                             </span>
                         </li>
                         <li className="info__list-item">
-                            <span className="term">
-                                Eye Color
-                            </span>
+                            <span className="term">Eye Color: </span>
                             <span> 
                                 {eyeColor}
                             </span>
