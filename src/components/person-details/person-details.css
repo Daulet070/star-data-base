@@ -3,15 +3,21 @@
     flex-wrap: wrap;
     flex-direction: row;
     gap: 20px;
-    flex: 1 1 auto;
+    flex: 0 1 100%;
     background-color: #444;
     padding: 1rem;
     border-radius: 15px;
 }
 .person-details__image {
-    width: 33%;
-    /* height: auto; */
+    width: 220px;
+    height: auto;
     border-radius: 10px;
+}
+@media (min-width:768px) {
+    .person-details {
+        flex: 0 1 calc(60% - 2.5rem);
+    }
+    
 }
 /* .person-details__info {
     margin-top: 1rem;

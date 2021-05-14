@@ -20,7 +20,7 @@
     color: #fff;
 }
 .info__title {
-    font-size: 2em;
+    font-size: 1.8em;
     margin: 0;
 }
 .info__list {
@@ -29,12 +29,13 @@
     padding: 0;
     margin: 0;
     display: flex;
+    padding: 1rem;
     flex-direction: column;
-    flex: 1 1 auto;
+    flex: 0 1 100%;
     color: #fff;
+    background-color: #444;
 }
 .info__list-item {
-    background-color: #444;
     border-top: 1px solid #575757;
     border-bottom: 1px solid #575757;
     padding: .4rem;
@@ -48,4 +49,10 @@
 }
 .info__list-item:last-child {
     border-bottom: none;
+}
+@media (min-width:768px) {
+    .info__list {
+        flex: 0 1 calc(40% - 2.5rem);
+    }
+    
 }

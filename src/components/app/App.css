@@ -7,20 +7,15 @@ body {
     background-color: black;
 }
 .container{
-    --gutter-x: .75rem;
-
-    display: flex;
-    flex-direction: column;
-    width:100%;
+    display: block;
+    margin: 0 auto;
+    padding: 0 1rem;
+    width:calc(100% - 2rem);
     max-width: 900px;
-    padding-right:var(--gutter-x);
-    padding-left:var(--gutter-x);
-    margin-right:auto;
-    margin-left:auto;
-    gap: 1rem;
 }
 .details {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin: 1rem 0;
 }
