@@ -27,6 +27,7 @@
     list-style: none;
     font-size: 1.2em;
     margin: 0;
+    border-radius: 15px;
     display: flex;
     padding: 1rem;
     flex-direction: column;
@@ -51,7 +52,7 @@
 }
 @media (min-width:768px) {
     .info__list {
-        flex: 0 1 calc(40% - 2.5rem);
+        flex: 0 1 calc(40% - .5rem);
     }
     
 }

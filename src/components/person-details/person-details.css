@@ -15,7 +15,7 @@
 }
 @media (min-width:768px) {
     .person-details {
-        flex: 0 1 calc(60% - 2.5rem);
+        flex: 0 1 calc(60% - .5rem);
     }
     
 }

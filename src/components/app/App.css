@@ -1,3 +1,8 @@
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
 html {
     height: 100%;
 }
@@ -5,17 +10,22 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
+    box-sizing: border-box;
 }
 .container{
     display: block;
     margin: 0 auto;
     padding: 0 1rem;
     width:calc(100% - 2rem);
-    max-width: 900px;
+    max-width: 300px;
 }
-.details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 1rem 0;
+@media (min-width: 576px) {
+    .container {
+        max-width: 600px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 900px;
+    }
 }
