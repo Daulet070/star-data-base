@@ -4,44 +4,68 @@ import './people-page.css';
 
 import ErrorIndicator from '../error-indicator';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
+import ErrorBoubdry from '../error-bowndry';
+import { Record } from '../record';
+
 
 class PeoplePage extends Component {
 
     swapiService = new SwapiService();
 
     state = {
-        selectedPerson: 3,
+        selectedItem: 3,
         hasError: false
     }
     
-    onPersonSelected = (selectedPerson) => {
+    onPersonSelected = (selectedItem) => {
         this.setState({
-          selectedPerson
+          selectedItem
         });
     };
 
-    componentDidCatch() {
-        this.setState({
-            hasError: true
-        })
-    }
+    // componentDidCatch() {
+    //     this.setState({
+    //         hasError: true
+    //     })
+    // }
 
     render() {
+
         if (this.state.hasError) {
             return <ErrorIndicator />
         }
-        const itemList = (<ItemList 
-                        onItemSelected={this.onPersonSelected}
-                        getData={this.swapiService.getAllPeople}
-                        renderItem={({ name, gender, birthYear }) => `${name} (${gender}, ${birthYear})`}
-                    />);
-        const personDetails = (<PersonDetails personId={this.state.selectedPerson} />);
+        const { getPerson,
+                getStarship,
+                getPersonImage,
+                getStarshipImage } = this.swapiService;
 
+        const itemList = (
+            <ItemList 
+                onItemSelected={this.onPersonSelected}
+                getData={this.swapiService.getAllPeople} 
+            >                
+                {( i ) => `${i.name} (${i.birthYear})`}
+            </ItemList>
+        );
+        
+        const itemDetails = (
+            <ErrorBoubdry>
+                <ItemDetails 
+                    itemId={this.state.selectedItem}
+                    getData={getPerson}
+                    getImgUrl={getPersonImage}
+                > 
+                    <Record field="gender" label="Gender" />
+                    <Record field="eyeColor" label="Eye Color" />
+                </ItemDetails>
+            </ErrorBoubdry>
+        );
+        
         return (
-            <Row left={itemList} right={personDetails} />
+            <Row left={itemList} right={itemDetails} />
         );
     }
 }

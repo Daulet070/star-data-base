@@ -1,4 +1,4 @@
-.person-details {
+.item-details {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -8,13 +8,13 @@
     padding: 1rem;
     border-radius: 15px;
 }
-.person-details__image {
+.item-details__image {
     width: 220px;
     height: auto;
     border-radius: 10px;
 }
 @media (min-width:768px) {
-    .person-details {
+    .item-details {
         flex: 0 1 calc(60% - .5rem);
     }
     

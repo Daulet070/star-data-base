@@ -23,12 +23,12 @@ class ItemList extends Component {
     renderItems(arr) {
         return arr.map((item) => {
             const { id } = item;
-            const label = this.props.renderItem(item);
+            const label = this.props.children(item);
 
             return (
                 <li key={id}
-                className="info__list-item"
-                onClick={() => this.props.onItemSelected(id)}>
+                    className="info__list-item"
+                    onClick={() => this.props.onItemSelected(id)}>
                     { label }
                 </li>
             );
