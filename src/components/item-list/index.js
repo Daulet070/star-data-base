@@ -1,55 +1,63 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
 
+import SwapiService from '../../services/swapi-service';
+
 import './item-list.css'
 
-class ItemList extends Component {
+const ItemList = (props) => {
 
-    state = {
-        itemList: []
-    };
-
-    componentDidMount() {
-        const { getData } = this.props;
-        
-        getData()
-        .then((itemList) => {
-            this.setState({
-                itemList
-            });
-        });
-    };
+    const { data, onItemSelected, children: renderLabel } = props;
     
-    renderItems(arr) {
-        return arr.map((item) => {
-            const { id } = item;
-            const label = this.props.children(item);
-
-            return (
-                <li key={id}
-                    className="info__list-item"
-                    onClick={() => this.props.onItemSelected(id)}>
-                    { label }
-                </li>
-            );
-        });
-    };
-    
-    render() {
-        const { itemList } = this.state;
-        
-        const items = this.renderItems(itemList);
-
-        if (!itemList) {
-            return <Spinner />
-        }
+    const items = data.map((item) => {
+        const { id } = item;
+        const label = renderLabel(item);
 
         return (
-            <ul className="info__list">
-                { items }        
-            </ul>
+            <li key={id}
+                className="info__list-item"
+                onClick={() => onItemSelected(id)}>
+                { label }
+            </li>
         );
-    }
-}
+    });
 
-export default ItemList;
+    return (
+        <ul className="info__list">
+            { items }        
+        </ul>
+    );
+    
+};
+
+const withData = (View, getData) => {
+    return class extends Component {
+        
+        state = {
+            data: []
+        };
+    
+        componentDidMount() {
+            
+            getData()
+            .then((data) => {
+                this.setState({
+                    data
+                });
+            });
+        };
+        render() {
+            const { data } = this.state;
+        
+            if (!data) {
+                return <Spinner />
+            }
+
+            return <View {...this.props} data={data} />
+        }
+    }
+};
+
+const { getAllPeople } = new SwapiService();
+
+export default withData(ItemList, getAllPeople);
