@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import Spinner from '../spinner';
+import React from 'react';
+
+import { withData } from '../hoc-helpers';
 
 import SwapiService from '../../services/swapi-service';
 
@@ -28,34 +29,6 @@ const ItemList = (props) => {
         </ul>
     );
     
-};
-
-const withData = (View, getData) => {
-    return class extends Component {
-        
-        state = {
-            data: []
-        };
-    
-        componentDidMount() {
-            
-            getData()
-            .then((data) => {
-                this.setState({
-                    data
-                });
-            });
-        };
-        render() {
-            const { data } = this.state;
-        
-            if (!data) {
-                return <Spinner />
-            }
-
-            return <View {...this.props} data={data} />
-        }
-    }
 };
 
 const { getAllPeople } = new SwapiService();
