@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
-import Spinner from '../spinner';
 
-import { Record } from '../record';
+import SwapiService from '../../services/swapi-service';
 
 import './item-details.css';
 
@@ -34,7 +32,6 @@ class ItemDetails extends Component {
         
         getData(itemId)
             .then((item) => {
-                // console.log("then ~ item", item)
                 this.setState({ 
                     item,
                     image: getImgUrl(item)
@@ -44,14 +41,12 @@ class ItemDetails extends Component {
 
     render() {
         const { item, image } = this.state;
-        console.log("render ~ this.state", this.state)
-        console.log("render ~ item", item)
 
         if (!item) {
             return <span>Select person from a list</span>
         }
         
-        const { id, name, gender, birthYear, eyeColor } = item;
+        const { name } = item;
 
         return (
             <div className="item-details">

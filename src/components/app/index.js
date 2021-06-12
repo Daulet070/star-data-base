@@ -6,8 +6,17 @@ import Header from '../header';
 import RandomPlanet  from '../random-planet';
 import PeoplePage from '../people-page';
 import ErrorIndicator from '../error-indicator';
-import ItemDetails from '../item-details'
+import ItemDetails from '../item-details';
 import { Record } from '../record';
+
+import {
+  PersonDetails,
+  StarshipDetails,
+  PlanetDetails,
+  PersonList,
+  StarshipList,
+  PlanetList
+} from '../sw-components';
 
 import './App.css';
 
@@ -36,10 +45,10 @@ class App extends Component {
     if (this.state.hasError) {
       return <ErrorIndicator />
     }
-    const { getPerson,
-            getStarship,
-            getPersonImage,
-            getStarshipImage } = this.swapiService;
+    // const { getPerson,
+    //         getStarship,
+    //         getPersonImage,
+    //         getStarshipImage } = this.swapiService;
             // console.log(getPerson);
 
     const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
@@ -53,28 +62,40 @@ class App extends Component {
     //     <Record field="eyeColor" label="Eye Color" />
     //   </ItemDetails>
     // );
-    const starshipDetails = (
-      <ItemDetails 
-          itemId={11}
-          getData={getStarship}
-          getImgUrl={getStarshipImage}
-      > 
-        <Record field="model" label="Model" />
-        <Record field="length" label="Length" />
-        <Record field="costInCredits" label="Cost" />
-      </ItemDetails>
-    );
+    // const starshipDetails = (
+    //   <ItemDetails 
+    //       itemId={11}
+    //       getData={getStarship}
+    //       getImgUrl={getStarshipImage}
+    //   > 
+    //     <Record field="model" label="Model" />
+    //     <Record field="length" label="Length" />
+    //     <Record field="costInCredits" label="Cost" />
+    //   </ItemDetails>
+    // );
     
     return (
       <div className="container">
         <Header />
         {/* { planet } */}
-        <RandomPlanet />
+        {/* <RandomPlanet /> */}
         {/* <button className='btn'
                 onClick={this.toggleRandomPlanet}>
           toggle Random Planet
         </button> */}
-        <PeoplePage />
+        {/* <PeoplePage /> */}
+        <PersonDetails itemId={11} />
+        <PersonList>
+          { ({name}) => <span>{name}</span>}
+        </PersonList>
+        <StarshipDetails itemId={9} />
+        <StarshipList>
+          { ({name}) => <span>{name}</span>}
+        </StarshipList>
+        <PlanetDetails itemId={5} />
+        <PlanetList>
+          { ({name}) => <span>{name}</span>}
+        </PlanetList>
         {/* <PlanetsPage />
         <StarshipPage /> */}
       </div>
