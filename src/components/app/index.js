@@ -85,17 +85,11 @@ class App extends Component {
         </button> */}
         {/* <PeoplePage /> */}
         <PersonDetails itemId={11} />
-        <PersonList>
-          { ({name}) => <span>{name}</span>}
-        </PersonList>
+        <PersonList />
         <StarshipDetails itemId={9} />
-        <StarshipList>
-          { ({name}) => <span>{name}</span>}
-        </StarshipList>
+        <StarshipList />
         <PlanetDetails itemId={5} />
-        <PlanetList>
-          { ({name}) => <span>{name}</span>}
-        </PlanetList>
+        <PlanetList />
         {/* <PlanetsPage />
         <StarshipPage /> */}
       </div>
