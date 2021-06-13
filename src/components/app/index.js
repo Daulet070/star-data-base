@@ -6,8 +6,11 @@ import Header from '../header';
 import RandomPlanet  from '../random-planet';
 import PeoplePage from '../people-page';
 import ErrorIndicator from '../error-indicator';
+import ErrorBoubdry from '../error-bowndry';
 import ItemDetails from '../item-details';
 import { Record } from '../record';
+
+import { SwapiServiceProvider } from '../swapi-service-context';
 
 import {
   PersonDetails,
@@ -75,24 +78,28 @@ class App extends Component {
     // );
     
     return (
-      <div className="container">
-        <Header />
-        {/* { planet } */}
-        {/* <RandomPlanet /> */}
-        {/* <button className='btn'
-                onClick={this.toggleRandomPlanet}>
-          toggle Random Planet
-        </button> */}
-        {/* <PeoplePage /> */}
-        <PersonDetails itemId={11} />
-        <PersonList />
-        <StarshipDetails itemId={9} />
-        <StarshipList />
-        <PlanetDetails itemId={5} />
-        <PlanetList />
-        {/* <PlanetsPage />
-        <StarshipPage /> */}
-      </div>
+      <ErrorBoubdry>
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className="container">
+            <Header />
+            {/* { planet } */}
+            {/* <RandomPlanet /> */}
+            {/* <button className='btn'
+                    onClick={this.toggleRandomPlanet}>
+                    toggle Random Planet
+                  </button> */}
+            {/* <PeoplePage /> */}
+            <PersonDetails itemId={11} />
+            <PersonList />
+            <StarshipDetails itemId={9} />
+            <StarshipList />
+            <PlanetDetails itemId={5} />
+            <PlanetList />
+            {/* <PlanetsPage />
+            <StarshipPage /> */}
+          </div>
+        </SwapiServiceProvider>
+      </ErrorBoubdry>
     )
   };
 }
