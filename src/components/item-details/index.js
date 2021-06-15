@@ -24,7 +24,7 @@ class ItemDetails extends Component {
     }
 
     updateItem() {
-        const { itemId, getData, getImgUrl } = this.props;
+        const { itemId, getData, getImageUrl } = this.props;
 
         if (!itemId) {
             return
@@ -34,7 +34,7 @@ class ItemDetails extends Component {
             .then((item) => {
                 this.setState({ 
                     item,
-                    image: getImgUrl(item)
+                    image: getImageUrl(item)
                 });
             });
     }
