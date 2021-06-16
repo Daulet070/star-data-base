@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import SwapiService from '../../services/swapi-service';
+import DummySwapiService from '../../services/dummy-swapi-service';
 
 import Header from '../header';
 import RandomPlanet  from '../random-planet';
@@ -25,13 +26,34 @@ import './App.css';
 
 class App extends Component {
 
-  swapiService = new SwapiService();
+  
 
   state = {
     showRandomPlanet: true,
+    swapiService: new DummySwapiService(),
     hasError: false
   };
-  // toggleRandomPlanet = () => {};
+
+  onServiceChange = () => {
+    this.setState(({swapiService}) => {
+
+      const Service = swapiService instanceof SwapiService ? 
+        DummySwapiService : SwapiService;
+        
+        return {
+          swapiService: new Service()
+        };
+    });
+  };
+  
+  toggleRandomPlanet = () => {
+    this.setState((state) => {
+      return {
+        showRandomPlanet: !state.showRandomPlanet
+      }
+    });
+  };
+
   // onPersonSelected = (id) => {
   //   this.setState({
   //     selectedPerson: id
@@ -48,40 +70,14 @@ class App extends Component {
     if (this.state.hasError) {
       return <ErrorIndicator />
     }
-    // const { getPerson,
-    //         getStarship,
-    //         getPersonImage,
-    //         getStarshipImage } = this.swapiService;
-            // console.log(getPerson);
 
-    const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
-    // const personDetails = (
-    //   <ItemDetails 
-    //       itemId={11}
-    //       getData={getPerson}
-    //       getImgUrl={getPersonImage}
-    //   > 
-    //     <Record field="gender" label="Gender" />
-    //     <Record field="eyeColor" label="Eye Color" />
-    //   </ItemDetails>
-    // );
-    // const starshipDetails = (
-    //   <ItemDetails 
-    //       itemId={11}
-    //       getData={getStarship}
-    //       getImgUrl={getStarshipImage}
-    //   > 
-    //     <Record field="model" label="Model" />
-    //     <Record field="length" label="Length" />
-    //     <Record field="costInCredits" label="Cost" />
-    //   </ItemDetails>
-    // );
+    // const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
     
     return (
       <ErrorBoubdry>
-        <SwapiServiceProvider value={this.swapiService}>
+        <SwapiServiceProvider value={this.state.swapiService}>
           <div className="container">
-            <Header />
+            <Header onServiceChange={this.onServiceChange} />
             {/* { planet } */}
             {/* <RandomPlanet /> */}
             {/* <button className='btn'
