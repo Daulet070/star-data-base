@@ -8,17 +8,29 @@
     padding: 1rem;
     border-radius: 15px;
 }
+
 .item-details__image {
-    width: 220px;
-    height: auto;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    margin-inline: auto;
     border-radius: 10px;
 }
+
 @media (min-width:768px) {
     .item-details {
         flex: 0 1 calc(60% - .5rem);
     }
     
 }
+/* @media (min-width:568px) {
+    .item-details__image {
+        width: 100%;
+        max-width: 220px;
+        height: 220px;
+        margin-inline: inherit;
+    }
+    
+} */
 /* .person-details__info {
     margin-top: 1rem;
 }

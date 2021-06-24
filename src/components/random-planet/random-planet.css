@@ -8,8 +8,10 @@
     border-radius: 15px;
 }
 .random-planet__image {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
     border-radius: 10px;
 }
 .random-planet__info {
@@ -50,9 +52,17 @@
 .info__list-item:last-child {
     border-bottom: none;
 }
-@media (min-width:768px) {
+@media (min-width: 768px) {
     .info__list {
         flex: 0 1 calc(40% - .5rem);
     }
     
+}
+@media (min-width: 578px) {
+    .random-planet__image {
+        width: 100%;
+        max-width: 220px;
+        height: 220px;
+        margin-inline: inherit;
+    }
 }

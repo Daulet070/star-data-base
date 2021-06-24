@@ -5,33 +5,20 @@ import DummySwapiService from '../../services/dummy-swapi-service';
 
 import Header from '../header';
 import RandomPlanet  from '../random-planet';
-import PeoplePage from '../people-page';
 import ErrorIndicator from '../error-indicator';
 import ErrorBoubdry from '../error-bowndry';
-import ItemDetails from '../item-details';
-import { Record } from '../record';
+import { PeoplePage, PlanetPage, StarshipPage } from '../pages';
+
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { SwapiServiceProvider } from '../swapi-service-context';
-
-import {
-  PersonDetails,
-  StarshipDetails,
-  PlanetDetails,
-  PersonList,
-  StarshipList,
-  PlanetList
-} from '../sw-components';
 
 import './App.css';
 
 class App extends Component {
 
-  
-
   state = {
-    showRandomPlanet: true,
-    swapiService: new DummySwapiService(),
-    hasError: false
+    swapiService: new SwapiService()
   };
 
   onServiceChange = () => {
@@ -45,20 +32,6 @@ class App extends Component {
         };
     });
   };
-  
-  toggleRandomPlanet = () => {
-    this.setState((state) => {
-      return {
-        showRandomPlanet: !state.showRandomPlanet
-      }
-    });
-  };
-
-  // onPersonSelected = (id) => {
-  //   this.setState({
-  //     selectedPerson: id
-  //   });
-  // };
 
   componentDidCatch() {
     this.setState({
@@ -70,30 +43,23 @@ class App extends Component {
     if (this.state.hasError) {
       return <ErrorIndicator />
     }
-
-    // const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
     
     return (
       <ErrorBoubdry>
         <SwapiServiceProvider value={this.state.swapiService}>
-          <div className="container">
-            <Header onServiceChange={this.onServiceChange} />
-            {/* { planet } */}
-            {/* <RandomPlanet /> */}
-            {/* <button className='btn'
-                    onClick={this.toggleRandomPlanet}>
-                    toggle Random Planet
-                  </button> */}
-            {/* <PeoplePage /> */}
-            <PersonDetails itemId={11} />
-            <PersonList />
-            <StarshipDetails itemId={9} />
-            <StarshipList />
-            <PlanetDetails itemId={5} />
-            <PlanetList />
-            {/* <PlanetsPage />
-            <StarshipPage /> */}
-          </div>
+          <Router>
+            <div className="container">
+              <Header onServiceChange={this.onServiceChange} />
+              {/* <RandomPlanet /> */}
+              <Route path="/" component={RandomPlanet} />
+              <Route path="/people" component={PeoplePage} />
+              <Route path="/planets" component={PlanetPage} />
+              <Route path="/starships" component={StarshipPage} />
+              {/* <PeoplePage />
+              <PlanetPage />
+              <StarshipPage /> */}
+            </div>
+          </Router>
         </SwapiServiceProvider>
       </ErrorBoubdry>
     )
