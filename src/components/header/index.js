@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { slide as Menu } from 'react-burger-menu';
+import { slide as Menu } from 'react-burger-menu';
 
 import './header.css'
 
-function header({ onServiceChange }) {
+function header(props) {
+    const { onServiceChange } = props;
     return (
         <header className="header">
             <h1 className="header__title">
                 <Link to="/" className="header__link">Star DB</Link>
             </h1>
+            <Menu {...props} right >
                 <ul className="header__list list">
                     <li className="list__item">
                         <Link to="/people/" className="list__item-link">People</Link>
@@ -27,6 +29,7 @@ function header({ onServiceChange }) {
                         <Link to="/admin" className="list__item-link">Admin</Link>
                     </li>
                 </ul>
+            </Menu>
             <button 
                 onClick={onServiceChange}
                 className="header-btn">

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
 import './item-details.css';
+import avatar from '../../avatar.png'
 
 class ItemDetails extends Component {
 
     state = {
-        item: {},
-        image: null
+        item: null,
+        image: avatar
     };
 
     componentDidMount() {
@@ -41,10 +42,10 @@ class ItemDetails extends Component {
         const { item, image } = this.state;
 
         if (!item) {
-            return <span>Select person from a list</span>
+            return <span>Select item from a list</span>
         }
         
-        const { name } = item;
+        const { name = 'N/A' } = item;
 
         return (
             <div className="item-details">
