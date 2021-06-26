@@ -7,9 +7,15 @@
     padding: .9rem 0;
     gap: 15px;
 }
+
 .header__title {
     color: white;
     margin: 0;
+    transition: color .3s ease;
+}
+
+.header__title:hover {
+    color: gold;
 }
 
 .header__link {

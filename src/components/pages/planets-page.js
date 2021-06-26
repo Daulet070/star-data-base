@@ -4,8 +4,6 @@ import { PlanetDetails, PlanetList } from '../sw-components';
 import Row from '../row';
 // import ErrorBoubdry from '../error-bowndry';
 
-import './people-page.css';
-
 class PlanetPage extends Component {
 
     state = {
