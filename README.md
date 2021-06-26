@@ -22,7 +22,7 @@
 - Списки песонажей, планет, кораблей
 - Меню
 
-Посмотреть живой пример можно по ссылке: https://daulet070.github.io/star-wars-db/
+Посмотреть проект: https://daulet070.github.io/star-wars-db/
 
 Клонировать: `git clone https://github.com/Daulet070/star-data-base.git`
 
