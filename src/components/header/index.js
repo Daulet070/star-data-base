@@ -9,7 +9,7 @@ function header(props) {
     return (
         <header className="header">
             <h1 className="header__title">
-                <Link to="/" className="header__link">Star DB</Link>
+                <Link to="/star-wars-db" className="header__link">Star DB</Link>
             </h1>
             <Menu {...props} right >
                 <ul className="header__list list">
