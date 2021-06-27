@@ -66,14 +66,14 @@ class App extends Component {
         <ErrorBoubdry>
           <SwapiServiceProvider value={this.state.swapiService}>
             <Router>
-                <Header onServiceChange={this.onServiceChange} pageWrapId={"page-wrap"} outerContainerId={"container"} />
+                <Header onServiceChange={this.onServiceChange} pageWrapId={"page-wrap"} outerContainerId={"app"} />
                 <div id="page-wrap">
                   <RandomPlanet />
                   <Switch>
                     <Route path="/star-wars-db" render={() => <h2>Welcone to Star DB</h2>} exact />
                     <Route path="/people/:id?" component={PeoplePage} />
                     <Route path="/planets" component={PlanetPage} />
-                    <Route path="/starships" exact component={StarshipPage} />
+                    <Route path="/starships" component={StarshipPage} exact />
                     <Route path="/starships/:id" 
                             render={({ match }) => {
                               const { id } = match.params;
