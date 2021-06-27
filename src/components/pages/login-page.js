@@ -14,7 +14,7 @@ function loginPage({ isLoggedIn, onLogin }) {
             </button>
         </div>;
     
-    const content = isLoggedIn ? <Redirect to="/" /> : loginContent;
+    const content = isLoggedIn ? <Redirect to="/star-wars-db" /> : loginContent;
 
     return content;
 }
